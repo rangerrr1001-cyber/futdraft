@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PlayerCard from '../components/PlayerCard/PlayerCard';
-import Spinner from '../components/common/Spinner';
-import { api } from '../services/api';
+import { Spinner } from '../components/common/Spinner';
+import api from '../services/api';
 
 interface Player {
   id: string;
