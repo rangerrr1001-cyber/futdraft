@@ -143,8 +143,8 @@ export async function createTeam(req: AuthRequest, res: Response): Promise<void>
 
     // Create team
     const teamResult = await client.query(
-      'INSERT INTO teams (user_id, name, formation, playstyle) VALUES ($1, $2, $3, $4) RETURNING id, name, formation, playstyle, created_at',
-      [userId, name, formation, playstyle]
+      'INSERT INTO teams (user_id, name, formation, playstyle, manager_id) VALUES ($1, $2, $3, $4, $5) RETURNING id, name, formation, playstyle, manager_id, created_at',
+      [userId, name, formation, playstyle, manager_id]
     );
 
     const team = teamResult.rows[0];
