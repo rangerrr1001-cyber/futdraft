@@ -40,6 +40,15 @@ export interface UserPlayer {
   acquired_at: Date;
 }
 
+// Manager types
+export interface Manager {
+  id: number;
+  name: string;
+  playstyle: string;
+  image_url: string | null;
+  created_at: Date;
+}
+
 // Team types
 export interface Team {
   id: string;
@@ -47,6 +56,7 @@ export interface Team {
   name: string;
   formation: string;
   playstyle: string;
+  manager_id: number | null;
   created_at: Date;
   updated_at: Date;
 }
@@ -64,6 +74,7 @@ export interface Draft {
   id: string;
   user_id: string;
   formation: string | null;
+  manager_id: number | null;
   created_at: Date;
   expires_at: Date;
 }

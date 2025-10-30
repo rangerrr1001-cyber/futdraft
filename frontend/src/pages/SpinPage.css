@@ -1,0 +1,95 @@
+.spin-page {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.spin-page h1 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.spin-info {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  color: #9ca3af;
+}
+
+.spin-info strong {
+  color: #3b82f6;
+  font-size: 1.25rem;
+}
+
+.spin-error {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 8px;
+}
+
+.slot-machine {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.slot-reel {
+  background: white;
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 140px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.reel-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reel-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-align: center;
+  min-height: 32px;
+}
+
+@media (max-width: 768px) {
+  .spin-page h1 {
+    font-size: 2rem;
+  }
+
+  .slot-machine {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .slot-reel {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spin-page h1 {
+    font-size: 1.75rem;
+  }
+
+  .reel-value {
+    font-size: 20px;
+  }
+}

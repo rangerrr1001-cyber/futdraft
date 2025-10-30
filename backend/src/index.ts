@@ -10,6 +10,7 @@ import playerRoutes from './routes/player.routes';
 import teamRoutes from './routes/team.routes';
 import draftRoutes from './routes/draft.routes';
 import battleRoutes from './routes/battle.routes';
+import managerRoutes from './routes/manager.routes';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use('/api/players', playerRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/draft', draftRoutes);
 app.use('/api/battles', battleRoutes);
+app.use('/api/managers', managerRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
