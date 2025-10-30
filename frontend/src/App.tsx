@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/layout/Header';
+import { Header } from './components/layout/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Page imports
