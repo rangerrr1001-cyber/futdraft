@@ -36,6 +36,7 @@ app.use('/api/players', playerRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/draft', draftRoutes);
 app.use('/api/battles', battleRoutes);
+app.use('/api/managers', managerRoutes);
 
 // Error handler (must be last)
 app.use(errorHandler);
