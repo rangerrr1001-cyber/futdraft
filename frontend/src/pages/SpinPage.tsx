@@ -175,18 +175,16 @@ const SpinPage: React.FC = () => {
         </p>
       )}
 
-      {showPlayerModal && acquiredPlayer && (
-        <Modal onClose={() => setShowPlayerModal(false)}>
-          <div style={{ textAlign: 'center' }}>
-            <h2 style={{ marginBottom: '1.5rem' }}>Player Acquired!</h2>
-            <PlayerCard player={acquiredPlayer} size="large" />
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <Button onClick={() => navigate('/inventory')}>View Inventory</Button>
-              <Button onClick={() => setShowPlayerModal(false)} variant="secondary">Close</Button>
-            </div>
+      <Modal isOpen={showPlayerModal} onClose={() => setShowPlayerModal(false)}>
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{ marginBottom: '1.5rem' }}>Player Acquired!</h2>
+          {acquiredPlayer && <PlayerCard player={acquiredPlayer} size="large" />}
+          <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <Button onClick={() => navigate('/inventory')}>View Inventory</Button>
+            <Button onClick={() => setShowPlayerModal(false)} variant="secondary">Close</Button>
           </div>
-        </Modal>
-      )}
+        </div>
+      </Modal>
     </div>
   );
 };
