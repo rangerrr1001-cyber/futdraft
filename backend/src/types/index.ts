@@ -74,6 +74,7 @@ export interface Draft {
   id: string;
   user_id: string;
   formation: string | null;
+  manager_id: number | null;
   created_at: Date;
   expires_at: Date;
 }
