@@ -54,7 +54,7 @@ const DraftBattlePage: React.FC = () => {
     if (!draftId) return;
 
     try {
-      const response = await api.post(`/draft/${draftId}/select-formation`, { formation });
+      await api.post(`/draft/${draftId}/select-formation`, { formation });
       setSelectedFormation(formation);
       // Start player selection (simplified)
       alert('Formation selected! Player selection flow to be implemented.');
