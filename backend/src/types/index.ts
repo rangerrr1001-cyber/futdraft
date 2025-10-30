@@ -40,6 +40,15 @@ export interface UserPlayer {
   acquired_at: Date;
 }
 
+// Manager types
+export interface Manager {
+  id: number;
+  name: string;
+  playstyle: string;
+  image_url: string | null;
+  created_at: Date;
+}
+
 // Team types
 export interface Team {
   id: string;
