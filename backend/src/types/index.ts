@@ -56,6 +56,7 @@ export interface Team {
   name: string;
   formation: string;
   playstyle: string;
+  manager_id: number | null;
   created_at: Date;
   updated_at: Date;
 }
