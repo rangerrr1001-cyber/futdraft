@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../services/api';
-import Button from '../components/common/Button';
-import Card from '../components/common/Card';
-import Spinner from '../components/common/Spinner';
-
-interface Manager {
-  id: number;
-  name: string;
-  playstyle: string;
-}
+import api from '../services/api';
+import { Button } from '../components/common/Button';
+import { Card } from '../components/common/Card';
+import { Spinner } from '../components/common/Spinner';
 
 const TeamBattlePage: React.FC = () => {
   const [teams, setTeams] = useState<any[]>([]);
-  const [managers, setManagers] = useState<Manager[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
-  const [selectedTeam, setSelectedTeam] = useState<any>(null);
 
   useEffect(() => {
     fetchData();
