@@ -306,7 +306,7 @@ export async function getDraftStatus(req: AuthRequest, res: Response): Promise<v
 
     // Get draft
     const draftResult = await pool.query(
-      'SELECT id, user_id, formation, expires_at FROM drafts WHERE id = $1',
+      'SELECT id, user_id, formation, manager_id, expires_at FROM drafts WHERE id = $1',
       [draftId]
     );
 
