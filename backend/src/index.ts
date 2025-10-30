@@ -10,6 +10,7 @@ import playerRoutes from './routes/player.routes';
 import teamRoutes from './routes/team.routes';
 import draftRoutes from './routes/draft.routes';
 import battleRoutes from './routes/battle.routes';
+import managerRoutes from './routes/manager.routes';
 
 dotenv.config();
 
