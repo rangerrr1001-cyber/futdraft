@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../services/api';
+import api from '../services/api';
 import PlayerCard from '../components/PlayerCard/PlayerCard';
-import Button from '../components/common/Button';
-import Modal from '../components/common/Modal';
-import Spinner from '../components/common/Spinner';
+import { Button } from '../components/common/Button';
+import { Modal } from '../components/common/Modal';
+import { Spinner } from '../components/common/Spinner';
 import { useNavigate } from 'react-router-dom';
 import './SpinPage.css';
 
