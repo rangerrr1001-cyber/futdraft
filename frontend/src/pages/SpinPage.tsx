@@ -33,7 +33,6 @@ const SpinPage: React.FC = () => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinOptions, setSpinOptions] = useState<SpinOptions | null>(null);
   const [currentValues, setCurrentValues] = useState({ position: '???', event: '???', ovr_range: '???' });
-  const [finalValues, setFinalValues] = useState<any>(null);
   const [acquiredPlayer, setAcquiredPlayer] = useState<Player | null>(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
   const [error, setError] = useState('');
