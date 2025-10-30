@@ -263,11 +263,18 @@ export async function updateTeam(req: AuthRequest, res: Response): Promise<void>
       return;
     }
 
-    // Update team
-    await client.query(
-      'UPDATE teams SET name = $1, formation = $2, playstyle = $3, updated_at = NOW() WHERE id = $4',
-      [name, formation, playstyle, teamId]
-    );
+    // Update team (conditionally update manager_id and playstyle)
+    if (manager_id !== undefined && playstyle) {
+      await client.query(
+        'UPDATE teams SET name = $1, formation = $2, playstyle = $3, manager_id = $4, updated_at = NOW() WHERE id = $5',
+        [name, formation, playstyle, manager_id, teamId]
+      );
+    } else {
+      await client.query(
+        'UPDATE teams SET name = $1, formation = $2, updated_at = NOW() WHERE id = $3',
+        [name, formation, teamId]
+      );
+    }
 
     // Delete old team_players
     await client.query('DELETE FROM team_players WHERE team_id = $1', [teamId]);
