@@ -165,6 +165,7 @@ export async function createTeam(req: AuthRequest, res: Response): Promise<void>
         name: team.name,
         formation: team.formation,
         playstyle: team.playstyle,
+        manager_id: team.manager_id,
         created_at: team.created_at,
       },
     });
