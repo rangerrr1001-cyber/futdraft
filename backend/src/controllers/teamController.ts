@@ -294,7 +294,8 @@ export async function updateTeam(req: AuthRequest, res: Response): Promise<void>
         id: teamId,
         name,
         formation,
-        playstyle,
+        playstyle: playstyle || undefined,
+        manager_id: manager_id || undefined,
       },
     });
   } catch (error) {
