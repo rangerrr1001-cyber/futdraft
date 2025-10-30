@@ -185,7 +185,7 @@ export async function updateTeam(req: AuthRequest, res: Response): Promise<void>
   try {
     const userId = req.userId;
     const teamId = req.params.id;
-    const { name, formation, playstyle, players } = req.body;
+    const { name, formation, manager_id, players } = req.body;
 
     // Check if team exists and belongs to user
     const teamCheck = await client.query(
@@ -209,9 +209,26 @@ export async function updateTeam(req: AuthRequest, res: Response): Promise<void>
       return;
     }
 
-    if (!VALID_PLAYSTYLES.includes(playstyle)) {
-      res.status(400).json({ error: 'Invalid playstyle' });
-      return;
+    // Validation: manager_id (optional for update)
+    let playstyle: string | undefined;
+    if (manager_id !== undefined) {
+      if (typeof manager_id !== 'number') {
+        res.status(400).json({ error: 'Invalid manager ID' });
+        return;
+      }
+
+      // Verify manager exists and get playstyle
+      const managerResult = await client.query(
+        'SELECT id, playstyle FROM managers WHERE id = $1',
+        [manager_id]
+      );
+
+      if (managerResult.rows.length === 0) {
+        res.status(400).json({ error: 'Invalid manager ID' });
+        return;
+      }
+
+      playstyle = managerResult.rows[0].playstyle;
     }
 
     if (!Array.isArray(players) || players.length !== 11) {
