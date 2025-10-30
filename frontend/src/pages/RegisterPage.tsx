@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Card from '../components/common/Card';
-import Button from '../components/common/Button';
+import { Card } from '../components/common/Card';
+import { Button } from '../components/common/Button';
 
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState('');
