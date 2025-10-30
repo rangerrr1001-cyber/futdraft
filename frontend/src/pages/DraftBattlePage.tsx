@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../services/api';
-import Button from '../components/common/Button';
-import Card from '../components/common/Card';
-import Spinner from '../components/common/Spinner';
-import PlayerCard from '../components/PlayerCard/PlayerCard';
+import api from '../services/api';
+import { Button } from '../components/common/Button';
+import { Card } from '../components/common/Card';
+import { Spinner } from '../components/common/Spinner';
 
 interface Manager {
   id: number;
@@ -17,9 +16,6 @@ const DraftBattlePage: React.FC = () => {
   const [draftId, setDraftId] = useState<string | null>(null);
   const [formations, setFormations] = useState<string[]>([]);
   const [selectedFormation, setSelectedFormation] = useState<string | null>(null);
-  const [currentPosition, setCurrentPosition] = useState<string | null>(null);
-  const [playerOptions, setPlayerOptions] = useState<any[]>([]);
-  const [draftComplete, setDraftComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
