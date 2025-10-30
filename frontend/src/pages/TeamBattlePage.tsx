@@ -15,12 +15,8 @@ const TeamBattlePage: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const [teamsRes, managersRes] = await Promise.all([
-        api.get('/teams'),
-        api.get('/managers')
-      ]);
+      const teamsRes = await api.get('/teams');
       setTeams(teamsRes.data.teams || []);
-      setManagers(managersRes.data || []);
     } catch (err: any) {
       setError('Failed to load data');
     } finally {
