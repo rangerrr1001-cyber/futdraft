@@ -362,6 +362,7 @@ export async function getDraftStatus(req: AuthRequest, res: Response): Promise<v
     res.status(200).json({
       draft_id: draft.id,
       formation: draft.formation,
+      manager_id: draft.manager_id,
       expires_at: draft.expires_at,
       selected_players: selectedPlayers,
       remaining_positions: remainingPositions,
