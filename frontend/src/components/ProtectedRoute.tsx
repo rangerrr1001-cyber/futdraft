@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Spinner from './common/Spinner';
+import { Spinner } from './common/Spinner';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
