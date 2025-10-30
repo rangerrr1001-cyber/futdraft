@@ -11,7 +11,7 @@ export async function getAllTeams(req: AuthRequest, res: Response): Promise<void
 
     // Get all teams for this user
     const teamsResult = await pool.query(
-      'SELECT id, name, formation, playstyle, created_at FROM teams WHERE user_id = $1 ORDER BY created_at DESC',
+      'SELECT id, name, formation, playstyle, manager_id, created_at FROM teams WHERE user_id = $1 ORDER BY created_at DESC',
       [userId]
     );
 
