@@ -14,6 +14,26 @@ const DRAFT_EXPIRY_MINUTES = 30;
 export async function startDraft(req: AuthRequest, res: Response): Promise<void> {
   try {
     const userId = req.userId;
+    const { manager_id } = req.body;
+
+    // Validation: manager_id (optional)
+    if (manager_id !== undefined && typeof manager_id !== 'number') {
+      res.status(400).json({ error: 'Invalid manager ID' });
+      return;
+    }
+
+    // Verify manager exists if provided
+    if (manager_id) {
+      const managerCheck = await pool.query(
+        'SELECT id FROM managers WHERE id = $1',
+        [manager_id]
+      );
+
+      if (managerCheck.rows.length === 0) {
+        res.status(400).json({ error: 'Manager not found' });
+        return;
+      }
+    }
 
     // Generate 5 random formations
     const allFormations = getAllFormations();
@@ -22,16 +42,17 @@ export async function startDraft(req: AuthRequest, res: Response): Promise<void>
     // Set expiry time (30 minutes from now)
     const expiresAt = new Date(Date.now() + DRAFT_EXPIRY_MINUTES * 60 * 1000);
 
-    // Create draft
+    // Create draft with optional manager_id
     const result = await pool.query(
-      'INSERT INTO drafts (user_id, expires_at) VALUES ($1, $2) RETURNING id, expires_at',
-      [userId, expiresAt]
+      'INSERT INTO drafts (user_id, manager_id, expires_at) VALUES ($1, $2, $3) RETURNING id, manager_id, expires_at',
+      [userId, manager_id || null, expiresAt]
     );
 
     const draft = result.rows[0];
 
     res.status(200).json({
       draft_id: draft.id,
+      manager_id: draft.manager_id,
       formations: selectedFormations,
       expires_at: draft.expires_at.toISOString(),
     });
